@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Salom Xush Kelibsiz {{ user.username}}</p>
+{% if user.is_authenticated %}
+<p>Siz Tizimga Kirdingiz</p>
+    <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Tizimdan Chiqish</button>
+    </form>
+{% else %}
+<p>Siz tizimga kirmagansiz! </p>
+<a href="{% url 'login' %}">Tizimga Kirish</a>
+<p>Accountingiz yo'qmi</p><a href="{% url 'register' %}">Ro'yxatdan o'tish</a>
+{% endif %}<br>
+</body>
+</html>
