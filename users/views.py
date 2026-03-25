@@ -43,12 +43,10 @@ def verify_otp(request):
                 obj_otp.save()
                 return redirect('verify-otp')
 
-            # Activate qilamiz
             user = obj_otp.user
             user.is_active = True
             user.save()
 
-            # Mark OTP ishlatilgan
             obj_otp.is_used = True
             obj_otp.save()
 
